@@ -38,6 +38,7 @@ getTranslation = (
   })
     .then(function (response: any) {
       console.log(response.data.data);
+      sendReply(response.data.data);
     })
     .catch(function (error: string) {
       console.error(error);
@@ -104,11 +105,36 @@ const domBuilder = (entries: [string, unknown][]) => {
   let transButton = document.createElement("button");
   transButton.textContent = "Translate";
   inputStage.appendChild(transButton);
+
   transButton.addEventListener("click", () => {
     console.log(targetLang.value, sourceLang.value, textInput.value);
 
     getTranslation(textInput.value, targetLang.value, sourceLang.value);
   });
+};
+
+const sendReply = (inputData: object) => {
+  const removeDiv = document.querySelector("#transDiv");
+  if (removeDiv) {
+    removeDiv.remove();
+    console.log("Removed div!")
+  }
+  const resultOutput = document.querySelector("#results");
+  let didYouMean = document.createElement("h3");
+  let transDiv = document.createElement("div");
+  transDiv.id = "transDiv";
+  let translation = document.createElement("p");
+  let pronunciation = document.createElement("p");
+  translation.textContent = `Translation: ${inputData["translation"]}`;
+  pronunciation.textContent = `Pronunciation: ${inputData["pronunciation"]}`;
+  inputData["source"]["text"]["autoCorrected"] === true ||
+  inputData["source"]["text"]["didYouMean"] === true
+    ? (didYouMean.textContent = `Did you mean: ${inputData["source"]["text"]["value"]}`)
+    : (didYouMean.textContent = null);
+  resultOutput.appendChild(transDiv);
+  transDiv.appendChild(didYouMean);
+  transDiv.appendChild(translation);
+  transDiv.appendChild(pronunciation);
 };
 
 window.addEventListener("load", () => {
