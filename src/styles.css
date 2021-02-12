@@ -8,12 +8,14 @@ body{
 
 #searchInputs{
     display: flex;
-    max-width: 60vw;
+    max-width: 70vw;
     flex-direction: column;
     justify-content: space-between;
     padding: 1rem;
     margin: 0 auto;
 }
+
+
 
 @media screen and (max-width: 600px) {
     #searchInputs h1{
@@ -37,6 +39,7 @@ body{
     border-radius: 8px;
     color: #f4f4f4;
     background-color: black;
+    font-size: 1rem;
 }
 
 #results {
@@ -50,4 +53,10 @@ body{
 #results h3{
     font-size: smaller;
     font-style: italic;
+}
+
+@media screen and (min-width: 1200px) {
+    #searchInputs, #results {
+        max-width: fit-content;
+    }
 }
