@@ -38,7 +38,6 @@ export const domBuilder = (entries: [string, unknown][]) => {
   let transButton = document.createElement("button");
   transButton.textContent = "Translate";
   inputStage.appendChild(transButton);
-
   transButton.addEventListener("click", () => {
     console.log(targetLang.value, sourceLang.value, textInput.value);
     getTranslation(textInput.value, targetLang.value, sourceLang.value);
@@ -50,7 +49,7 @@ export const domBuilder = (entries: [string, unknown][]) => {
   })
 };
 
-//Builds reply once recieved from API
+//Builds translation reply once recieved from API
 export const sendReply = (inputData: object) => {
   const removeDiv = document.querySelector("#transDiv");
   if (removeDiv) {

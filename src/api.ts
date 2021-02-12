@@ -4,16 +4,14 @@ import { sendReply, domBuilder } from "./domManip";
 
 //Show/hide loading spinner
 export function hideSpinner() {
-  const spinner = document.querySelector(".spinner-border")
-  spinner.setAttribute("style", "display: none")
-  
+  const spinner = document.querySelector(".spinner-border");
+  spinner.setAttribute("style", "display: none");
 }
 
 export function showSpinner() {
-  const spinner = document.querySelector(".spinner-border")
-  spinner.setAttribute("style", "display: block")
+  const spinner = document.querySelector(".spinner-border");
+  spinner.setAttribute("style", "display: block");
 }
-
 
 //Main translation API get
 interface ApiGetter {
@@ -27,7 +25,7 @@ getTranslation = (
   targetLang: string,
   sourceLang: string
 ) => {
-  showSpinner()
+  showSpinner();
   axios({
     method: "POST",
     url: "https://google-translate20.p.rapidapi.com/translate",
@@ -43,7 +41,6 @@ getTranslation = (
     }),
   })
     .then(function (response: any) {
-      console.log(response.data.data);
       hideSpinner();
       sendReply(response.data.data);
     })
@@ -52,8 +49,9 @@ getTranslation = (
     });
 };
 
+//Get language options
 const getLanguages = () => {
-  showSpinner()
+  showSpinner();
   axios({
     method: "GET",
     url: "https://google-translate20.p.rapidapi.com/languages",
