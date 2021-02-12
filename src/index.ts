@@ -5,7 +5,7 @@ import qs from "qs";
 const displayOptions = () => {
   const inputStage = document.querySelector("#searchInputs");
   const testText = document.createElement("h1");
-  testText.textContent = "Work!";
+  testText.textContent = "Google Translate App";
   inputStage?.appendChild(testText);
 };
 

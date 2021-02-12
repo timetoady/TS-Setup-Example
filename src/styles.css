@@ -5,3 +5,49 @@ h1 {
 body{
     background-color: #777777;
 }
+
+#searchInputs{
+    display: flex;
+    max-width: 60vw;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 1rem;
+    margin: 0 auto;
+}
+
+@media screen and (max-width: 600px) {
+    #searchInputs h1{
+     font-size: 1.6rem;
+    }
+}
+
+#searchInputs label{
+    color: #f4f4f4;
+}
+
+#searchInputs select, #searchInputs input{
+    font-size: 1rem;
+    padding: .2rem;
+    margin-bottom: 1rem;
+}
+
+#searchInputs button {
+    text-transform: uppercase;
+    padding: .5rem;
+    border-radius: 8px;
+    color: #f4f4f4;
+    background-color: black;
+}
+
+#results {
+    background-color: #f4f4f4;
+    max-width: 80vw;
+    padding: 1rem;
+    border: 2px dashed black;
+    margin: 1rem auto;
+}
+
+#results h3{
+    font-size: smaller;
+    font-style: italic;
+}
